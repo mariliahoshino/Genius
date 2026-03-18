@@ -60,6 +60,39 @@ Os botões utilizam **INPUT_PULLUP**, portanto devem ser conectados ao **GND**.
 5. A cada rodada correta, a sequência aumenta
 6. Se o jogador errar, ocorre **Game Over**
 
+
+---
+
+```mermaid
+flowchart TD
+
+A[Início] --> B[Inicializa variáveis]
+B --> C[Gerar número aleatório]
+C --> D[Salvar na sequência]
+
+D --> E[Mostrar sequência]
+E --> F[Loop de LEDs e sons]
+
+F --> G[Esperar jogador]
+
+G --> H{Botão pressionado}
+
+H --> I[Captura botão]
+
+I --> J{Correta?}
+
+J -- Não --> K[Game Over]
+K --> L[Reset rodada]
+L --> C
+
+J -- Sim --> M[Próximo passo]
+
+M --> N{Terminou sequência?}
+
+N -- Não --> G
+N -- Sim --> O[Incrementa rodada]
+O --> C
+```
 ---
 
 ## ⚙️ Estrutura do Código
